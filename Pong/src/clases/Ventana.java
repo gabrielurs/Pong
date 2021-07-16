@@ -15,6 +15,7 @@ public class Ventana extends JFrame {
 
     private final int ancho=800, alto=500;
     private tableroJuego lamina;
+    private Hilo hilo;
     public Ventana() {
 
         setTitle("Pong");
@@ -23,5 +24,11 @@ public class Ventana extends JFrame {
         setResizable(false);
         lamina = new tableroJuego();
         add(lamina);
+        setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+//        hilo = new Hilo(lamina);
+//        hilo.start();
+        lamina.iterarJuego();
     }
 }
