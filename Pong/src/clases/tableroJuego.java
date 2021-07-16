@@ -21,6 +21,7 @@ public class tableroJuego extends JPanel {
     Pelota pelota = new Pelota(0,0);
     Raqueta r1 = new Raqueta(10,200);
     Raqueta r2 = new Raqueta(784-10-Raqueta.ancho,200);
+    
     public tableroJuego() {
         setBackground(Color.BLACK);
     }
@@ -40,7 +41,9 @@ public class tableroJuego extends JPanel {
     }
     
     public void actualizar(){
-        pelota.mover(getBounds());
+        pelota.mover(getBounds(),colision(r1.getRaqueta()),colision(r2.getRaqueta()));
+        r1.moverR1(getBounds());
+        r2.moverR2(getBounds());
     }
     public void iterarJuego(){
         while(true){
@@ -52,4 +55,8 @@ public class tableroJuego extends JPanel {
             }
         }
     }
+    
+    private boolean colision(Rectangle2D r){
+            return pelota.getPelota().intersects(r);
+       }
 }

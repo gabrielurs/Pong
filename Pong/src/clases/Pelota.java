@@ -24,13 +24,26 @@ public class Pelota {
         this.y = y;
     }
 
+    Pelota() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public Rectangle2D getPelota() {
         return new Rectangle2D.Double(x, y, ancho, alto);
     }
 
-    public void mover(Rectangle limites) {
+    public void mover(Rectangle limites, boolean colisionR1, boolean coloisionR2) {
         x += dx;
         y += dy;
+        if (colisionR1) {
+            dx=-dx;
+            x=25;
+        }
+        if (coloisionR2) {
+            dx=-dx;
+            x=755;
+        }
+        
         if (x > limites.getMaxX()) {
             dx = -dx;
         }
